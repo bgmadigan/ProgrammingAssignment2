@@ -13,16 +13,15 @@
 ##
 
 
-
 makeCacheMatrix <- function(x = matrix()) {
 ##
-## 'x' is a square maytrix
+##   makeCacheMatrix takes as its input:
+##      'x' - square matrix
 ##
 ##   1.set the value of the matrix
 ##   2.get the value of the matrix
-##   3.set the value of the inverse of the matrix   
+##   3.set the value of the inverse of the matrix using "solve"   
 ##   4.get the value of the inverse of the matrix
-
 ## 
         m <- NULL
         set <- function(y) {
@@ -35,19 +34,20 @@ makeCacheMatrix <- function(x = matrix()) {
         list(set = set, get = get,
              setinverse = setinverse,
              getinverse = getinverse)
-
-        
-
-
-
 }
 
-##  B = matrix( c(1:9),   nrow=3, ncol=3)
-
-## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+##
+##   cacheSolve takes as its input:
+##      'x' - square matrix
+##
+##   If the inverse matrix has already been determined
+##      return the cached matrix (to save calculation time)
+##   otherwise
+##      use "solve" todetermine the inverse matrix
+##      return the matrix
+       
        m <- x$getinverse()
         if(!is.null(m)) {
                 message("getting cached matrix")
